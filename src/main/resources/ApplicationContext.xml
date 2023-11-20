@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+        <bean id="scanner" class="java.util.Scanner">
+    	<constructor-arg value="#{ T(System).in }"  /> <!-- Inject System.in as the input source -->
+   	    </bean>
+        <bean id="question1" class="com.learning.bean.Question"
+          c:question="What is the extension of java code files?"
+    	  c:opt1="1. .js"
+    	  c:opt2="2. .class"
+    	  c:opt3="3. .txt"
+    	  c:opt4="4. .java"></bean>	
+    	<bean id="question2" class="com.learning.bean.Question"
+          c:question="What is the return type of Constructors?"
+    	  c:opt1="1. int"
+    	  c:opt2="2. float"
+    	  c:opt3="3. void"
+    	  c:opt4="4. none of the above"></bean>	  
+    	<bean id="question3" class="com.learning.bean.Question"
+          c:question="What is the process of combining data and fuctions in to single unit called ?"
+    	  c:opt1="1.Polymorphism"
+    	  c:opt2="2.Inheritance"
+    	  c:opt3="3.Abstraction"
+    	  c:opt4="4.Encapsulation"></bean>
+    	<bean id="question4" class="com.learning.bean.Question"
+          c:question="Which one of the following is not an access modifier?"
+    	  c:opt1="1.int"
+    	  c:opt2="2.private"
+    	  c:opt3="3.public"
+    	  c:opt4="4.protected"></bean> 
+    	  <bean id="question5" class="com.learning.bean.Question" 
+    	  c:question="A Java interface can contain :"
+    	  c:opt1="1.Instance Variables"
+    	  c:opt2="2.Static Methods"
+    	  c:opt3="3.Constructors"
+    	  c:opt4="4.Abstract Methods"></bean>
+    	<bean id="questionService" class="com.learning.service.QuestionService">
+    	<property name="scanner" ref="scanner"></property>
+    	<constructor-arg name="questions">
+    	<list>
+    			<ref bean="question1" />
+    			<ref bean="question2" />
+    			<ref bean="question3" />
+    			<ref bean="question4" />
+    			<ref bean="question5" />		
+    	</list>
+    	</constructor-arg>
+    </bean>
+   
+   
+    
+  </beans>
